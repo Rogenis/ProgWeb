@@ -11,4 +11,11 @@ function sobre(req,res){
     })
 }
 
-module.exports = {index, sobre}
+function ui(req,res){
+    res.render("main/ui")
+}
+
+function game(req,res){
+    res.render("main/game")
+}
+module.exports = {index, sobre, ui, game}
