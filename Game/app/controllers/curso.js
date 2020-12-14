@@ -12,15 +12,23 @@ async function create(req, res) {
     if(req.route.methods.get){
         res.render("curso/create")
     }else{
-       await Curso.create({
-            sigla: req.body.sigla,
-            nome: req.body.nome,
-            descricao: req.body.descricao,
-            areaId: req.body.area
-        }) 
-        res.redirect("/")
+        try{
+            await Curso.create({
+                sigla: req.body.sigla,
+                nome: req.body.nome,
+                descricao: req.body.descricao,
+                areaId: req.body.area
+            }, {where:{id: req.params.id}});
+            res.redirect("/curso/" + req.params.id);
+        } catch(errors){
+            res.render("curso/create", {
+                curso: req.body,
+                errors: errors
+            });
+        }
     }
 }
+
 
 async function read(req, res) {
     const curso = await Curso.findOne({where: {id: req.params.id}, include: models.Area})

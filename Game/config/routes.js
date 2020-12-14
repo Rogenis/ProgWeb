@@ -3,6 +3,7 @@ const router = express.Router()
 const mainController = require("../app/controllers/main")
 const areaController = require("../app/controllers/area")
 const cursoController = require("../app/controllers/curso")
+//const gameController = require("../app/controllers/game")
 
 router.get("/", mainController.index)
 router.get("/sobre", mainController.sobre)

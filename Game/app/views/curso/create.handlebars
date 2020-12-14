@@ -7,6 +7,7 @@
     <input type="text" class="form-control" name="sigla" id="sigla" 
      placeholder="Informe a sigla do curso">
     <small class="form-text text-muted">Em caso de dúvidas, consulto o site da UFAM.</small>
+    <div class="invalid-feedback">{{printError errors 'sigla'}}</div>
 </div>
 
 
@@ -14,6 +15,7 @@
     <label for="nome">Nome do Curso</label>
     <input type="text" class="form-control" name="nome" id="nome" 
      placeholder="Informe o nome do curso">
+    <div class="invalid-feedback">{{printError errors 'nome'}}</div>
 </div>
 
 <div class="form-group">
