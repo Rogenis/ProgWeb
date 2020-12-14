@@ -5,7 +5,10 @@ const router = require("./config/routes")
 const sass = require("node-sass-middleware")
 const app = express()
 
-app.engine("handlebars", handlebars())
+app.engine("handlebars", handlebars({
+    helpers: require(`${__dirname}/app/views/helpers`)
+}))
+
 app.set("view engine", "handlebars")
 app.set("views", `${__dirname}/app/views`)
 
@@ -25,6 +28,8 @@ app.use("/js", [
     express.static(__dirname + '/node_modules/popper.js/dist/umd'),
     express.static(__dirname + '/node_modules/bootstrap/dist/js')
 ]); 
+
+app.use(express.urlencoded({extended: false}))
 
 app.use(logger("combined"))
 app.use(router)
